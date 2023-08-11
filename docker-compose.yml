@@ -35,7 +35,7 @@ services:
       - "443:443"
       - "81:81"
     networks:
-      - proxiable
+      - xignature_net
 
   portainer:
     container_name: portainer
