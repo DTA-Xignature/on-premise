@@ -23,6 +23,18 @@ x-minio-common:
 # using nginx reverse proxy, load balancing, you can access
 # it through port 9000.
 services:
+  portainer:
+    container_name: portainer
+    restart: always
+    image: portainer/portainer-ce:latest
+    ports:
+      - "9443:9443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    networks:
+      - xignature_net
+
   portal:
     container_name: portal
     restart: on-failure
@@ -146,6 +158,7 @@ volumes:
   data4-1:
   data4-2:
   db-data:
+  portainer_data:
 
 networks:
   xignature_net:
